@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahlam Putra Ganis, S.Kom | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0D0B16',
+                        darkCard: '#171222',
+                        darkBorder: '#332744',
+                        accentEmerald: '#5227FF',
+                        accentCyan: '#FF9FFC',
+                        emerald: {
+                            300: '#C4B5FF',
+                            400: '#8B6BFF',
+                            500: '#5227FF',
+                            600: '#4320D6',
+                            900: '#25145F',
+                        },
+                        cyan: {
+                            300: '#FFE0FE',
+                            400: '#FFB8FC',
+                            500: '#FF9FFC',
+                            600: '#D97BD6',
+                            900: '#5E315D',
+                        },
+                        blue: {
+                            300: '#D9D0FF',
+                            400: '#A99AFF',
+                            500: '#7866D8',
+                            600: '#5D4CB3',
+                            900: '#30285B',
+                        },
+                        purple: {
+                            300: '#FFE0FE',
+                            400: '#FFB8FC',
+                            500: '#FF9FFC',
+                            600: '#D97BD6',
+                            900: '#5E315D',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-dark-bg: #0D0B16;
+            --color-dark-card: #171222;
+            --color-dark-border: #332744;
+            --color-lime: #5227FF;
+            --color-violet: #FF9FFC;
+            --color-coral: #FF9FFC;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-dark-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-dark-border);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-lime);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px -5px rgba(213, 255, 87, 0.18);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(185, 154, 255, 0.2);
+        }
+        body {
+            isolation: isolate;
+        }
+        .ambient-background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 90%);
+        }
+        .ambient-orb {
+            position: absolute;
+            width: 28rem;
+            aspect-ratio: 1;
+            border-radius: 9999px;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: float-orb 18s ease-in-out infinite alternate;
+        }
+        .ambient-orb-emerald {
+            top: 8%;
+            left: -12rem;
+            background: var(--color-lime);
+        }
+        .ambient-orb-cyan {
+            top: 40%;
+            right: -14rem;
+            background: var(--color-violet);
+            animation-delay: -8s;
+        }
+        .ambient-orb-blue {
+            bottom: -18rem;
+            left: 35%;
+            width: 24rem;
+            background: var(--color-coral);
+            animation-delay: -12s;
+        }
+        @keyframes float-orb {
+            from { transform: translate3d(0, -2rem, 0) scale(0.9); }
+            to { transform: translate3d(3rem, 3rem, 0) scale(1.15); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ambient-orb {
+                animation: none;
+            }
+        }
+    </style>
+     <link rel="stylesheet" href="animations.css">  
+</head>
+
+<body class="bg-darkBg text-slate-200 font-sans antialiased selection:bg-accentEmerald selection:text-darkBg min-h-screen flex flex-col justify-between">
+
+    <section id="welcome-screen" class="welcome-screen" aria-labelledby="welcome-title">
+        <canvas id="welcome-threads" class="welcome-threads-canvas" aria-hidden="true"></canvas>
+        <div class="welcome-content">
+            <h1 id="welcome-title" class="welcome-title depth-text" data-text="WELCOME TO|MY PORTFOLIO" role="img" aria-label="Welcome to my portfolio">
+                <span class="depth-text-stage" aria-hidden="true"></span>
+            </h1>
+            <p class="welcome-eyebrow">PORTFOLIO PRESENTS</p>
+            <p class="welcome-name">Muhammad Ahlam Putra Ganis, S.Kom</p>
+            <button id="welcome-skip" class="welcome-skip" type="button">Lewati intro <span aria-hidden="true">→</span></button>
+        </div>
+    </section>
+
+    <div class="ambient-background" aria-hidden="true">
+        <span class="ambient-orb ambient-orb-emerald"></span>
+        <span class="ambient-orb ambient-orb-cyan"></span>
+        <span class="ambient-orb ambient-orb-blue"></span>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-500 text-slate-950 px-5 py-3 rounded-xl shadow-2xl font-bold flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toast-message">Teks berhasil disalin!</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-darkBg/80 border-b border-darkBorder/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-2 group">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accentEmerald to-accentCyan flex items-center justify-center font-extrabold text-slate-950 text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    A
+                </span>
+                <span class="font-bold text-lg text-slate-100 tracking-tight">Ahlam<span class="text-accentEmerald">.dev</span></span>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#about" class="hover:text-accentEmerald transition-colors">Tentang Saya</a>
+                <a href="#education" class="hover:text-accentEmerald transition-colors">Pendidikan</a>
+                <a href="#skills" class="hover:text-accentEmerald transition-colors">Keahlian</a>
+                <a href="#projects" class="hover:text-accentEmerald transition-colors">Proyek</a>
+                <a href="#certificates" class="hover:text-accentEmerald transition-colors">Sertifikat</a>
+                <a href="#experience" class="hover:text-accentEmerald transition-colors">Pengalaman</a>
+                <a href="#contact" class="hover:text-accentEmerald transition-colors">Kontak</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-accentEmerald to-accentCyan text-slate-950 font-bold text-sm hover:brightness-110 transition-all shadow-md shadow-emerald-900/20">
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darkCard border-b border-darkBorder px-6 py-6 space-y-4 font-medium text-slate-300">
+            <a href="#about" class="block hover:text-accentEmerald transition-colors mobile-link">Tentang Saya</a>
+            <a href="#education" class="block hover:text-accentEmerald transition-colors mobile-link">Pendidikan</a>
+            <a href="#skills" class="block hover:text-accentEmerald transition-colors mobile-link">Keahlian</a>
+            <a href="#projects" class="block hover:text-accentEmerald transition-colors mobile-link">Proyek</a>
+            <a href="#certificates" class="block hover:text-accentEmerald transition-colors mobile-link">Sertifikat</a>
+            <a href="#experience" class="block hover:text-accentEmerald transition-colors mobile-link">Pengalaman</a>
+            <a href="#contact" class="block hover:text-accentEmerald transition-colors mobile-link">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 flex-grow">
+        
+        <!-- HERO SECTION -->
+        <section id="home" class="relative py-16 md:py-28 overflow-hidden">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accentEmerald/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    
+
+                    <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/80 text-emerald-400 text-xs font-semibold tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-accentEmerald animate-pulse"></span>
+             
+
+
+
+                            
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            Halo, Saya <br class="hidden sm:inline">
+                            <span class="bg-gradient-to-r from-accentEmerald via-accentCyan to-blue-500 bg-clip-text text-transparent">
+                                Muhammad Ahlam Putra Ganis
+                            </span>
+                        </h1>
+
+                        <p class="text-slate-400 text-lg sm:text-xl font-medium">
+                            Mobile & Edge AI Developer | Data Analyst | Software Engineering
+                        </p>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+                            Saya merupakan mahasiswa Teknik Informatika yang memiliki minat di bidang informasi teknologi, khususnya pengembangan <strong>aplikasi berbasis web dan mobile</strong>. Saya memiliki minat dalam pemrograman, pengembangan sistem, database, serta penerapan teknologi untuk menyelesaikan permasalahan secara efektif. Saya senang mempelajari hal-hal baru, mampu bekerja secara individu maupun dalam tim, dan memiliki motivasi untuk terus mengembangkan kemampuan serta pengalaman di bidang informasi teknologi.                </p>
+
+                        <div class="pt-4 flex flex-wrap items-center justify-center md:justify-start gap-4">
+                            <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-accentEmerald to-accentCyan text-slate-950 font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-emerald-900/30 flex items-center gap-2">
+                                <i class="fa-solid fa-rocket"></i> Lihat Portofolio
+                            </a>
+                            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-darkCard border border-darkBorder text-slate-200 font-semibold text-sm hover:border-slate-600 transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> Kontak Saya
+                            </a>
+                        </div>
+
+                        <!-- Social Quick Links -->
+                        <div class="pt-6 flex items-center justify-center md:justify-start gap-4 text-slate-400">
+                            <a href="https://github.com/ahlam-23" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-darkCard border border-darkBorder flex items-center justify-center hover:text-accentEmerald hover:border-accentEmerald transition-all" title="GitHub">
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/muhammad-ahlam-putra-ganis-446311447/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bg5NYupENRrKSKH230wnXZQ%3D%3D" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-darkCard border border-darkBorder flex items-center justify-center hover:text-accentCyan hover:border-accentCyan transition-all" title="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in text-lg"></i>
+                            </a>
+                            <button onclick="copyEmail('ahlam1234lam@gmail.com')" class="w-10 h-10 rounded-lg bg-darkCard border border-darkBorder flex items-center justify-center hover:text-emerald-400 hover:border-emerald-400 transition-all" title="Salin Email">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Code Visual Terminal Widget -->
+                    <div class="md:col-span-5">
+                        <div class="bg-darkCard rounded-2xl border border-darkBorder overflow-hidden shadow-2xl glow-emerald">
+                            <div class="bg-slate-900/90 px-4 py-3 border-b border-darkBorder flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                </div>
+                                <span class="text-xs text-slate-500 font-mono">ahlam_profile.py</span>
+                            </div>
+                            <div class="p-6 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 space-y-2">
+                                <p><span class="text-purple-400">class</span> <span class="text-yellow-300">Developer</span>:</p>
+                                <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(self):</p>
+                                <p class="pl-8"><span class="text-red-400">self</span>.name = <span class="text-emerald-300">"Muhammad Ahlam Putra Ganis"</span></p>
+                                <p class="pl-8"><span class="text-red-400">self</span>.degree = <span class="text-emerald-300">"S.Kom (Teknik Informatika)"</span></p>
+                                <p class="pl-8"><span class="text-red-400">self</span>.thesis_grade = <span class="text-yellow-400">"A*"</span></p>
+                                <p class="pl-8"><span class="text-red-400">self</span>.focus = [<span class="text-cyan-300">"Mobile Edge AI"</span>, <span class="text-cyan-300">"Data Analytics"</span>, <span class="text-cyan-300">"Web Systems"</span>]</p>
+                                <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">get_mindset</span>(self):</p>
+                                <p class="pl-8"><span class="text-purple-400">return</span> <span class="text-emerald-300">"Fast learner, adaptable, & problem solver"</span></p>
+                                <div class="pt-3 text-slate-500 border-t border-slate-800">
+                                    <p># Status: Ready for internship & tech roles</p>
+                                    <p class="text-emerald-400">>>> print("System Ready")</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME & STATS SECTION -->
+        <section id="about" class="py-16 bg-slate-900/40 border-y border-darkBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-accentEmerald uppercase mb-2">Tentang Saya</h2>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Bridge Between Code & Real-World Operations</h3>
+                    <!-- ================= BAGIAN 1: HTML =================
+  Tempel sebagai ELEMEN PERTAMA di dalam:
+  <div class="md:col-span-7 space-y-6 text-center md:text-left">  (hero, sebelum badge "Informatics Engineering Graduate")
+-->
+<div class="flex justify-center">
+  <div class="cutout" id="cutout" role="img" aria-label="Foto Muhammad Ahlam Putra Ganis">
+    <img class="cutout-img cutout-base" src="img/ahlam-hero.png" alt="" draggable="false">
+    <img class="cutout-img cutout-alt" src="img/images.png" alt="" aria-hidden="true" draggable="false">
+  </div>
+</div>
+
+
+<!-- ================= BAGIAN 2: CSS =================
+  Tempel di dalam <head>, setelah </style> terakhir.
+-->
+<style>
+  @keyframes cutEnter{from{opacity:0;transform:translateY(30px) scale(.94)}to{opacity:1;transform:none}}
+  @keyframes cutFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes cutGlow{from{transform:scale(.94);opacity:.75}to{transform:scale(1.08);opacity:1}}
+
+  .cutout{position:relative;width:min(15rem,70vw);aspect-ratio:4/5;cursor:crosshair;isolation:isolate;touch-action:pan-y;
+    --mx:50px;--my:50px;--r:.1px;--o:0;
+    animation:cutEnter .9s cubic-bezier(.2,.7,.2,1) both, cutFloat 6s ease-in-out 1s infinite}
+  .cutout::before{content:"";position:absolute;inset:10% 0 0;z-index:-1;border-radius:50%;filter:blur(30px);
+    background: radial-gradient(circle at 50% 55%,rgba(82,39,255,.2),rgba(255,159,252,.16) 45%,transparent 70%);
+    animation:cutGlow 5s ease-in-out infinite alternate}
+  .cutout-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;
+    pointer-events:none;user-select:none;-webkit-user-drag:none}
+  .cutout-base{filter:drop-shadow(0 18px 28px rgba(0,0,0,.55))}
+  .cutout-alt{object-fit:contain;object-position:center bottom;will-change:mask-image;
+    -webkit-mask-image:radial-gradient(circle var(--r) at var(--mx) var(--my),#000 0,#000 60%,transparent 100%);
+            mask-image:radial-gradient(circle var(--r) at var(--mx) var(--my),#000 0,#000 60%,transparent 100%)}
+  /* dipakai otomatis bila img/ahlam-hero.png belum ada */
+  .cutout-alt.alt-fx{filter:sepia(1) hue-rotate(-50deg) saturate(4.5) contrast(1.15)}
+  /* lingkaran cyan yang mengikuti kursor */
+  .cutout::after{content:"";position:absolute;left:var(--mx);top:var(--my);width:calc(var(--r)*2);height:calc(var(--r)*2);
+    transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:var(--o);
+    border:1.5px solid rgba(255,159,252,.65);box-shadow:0 0 18px rgba(255,159,252,.25),inset 0 0 18px rgba(82,39,255,.14)}
+  @media (prefers-reduced-motion:reduce){.cutout,.cutout::before{animation:none}}
+</style>
+
+
+<!-- ================= BAGIAN 3: JAVASCRIPT =================
+  Tempel paling bawah, sebelum </body>.
+-->
+<script>
+(function () {
+  function init() {
+    const box = document.getElementById('cutout');
+    if (!box) return;
+    const base = box.querySelector('.cutout-base');
+    let alt = box.querySelector('.cutout-alt');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Jika img/ahlam-hero.png TIDAK ADA: buat versi "hero" dari fotomu sendiri
+    // (warna merah-biru + pola jaring, hanya menempel di badanmu, bukan di background)
+    function fallback() {
+      if (box.dataset.fx) return; box.dataset.fx = '1';
+      const build = () => {
+        const w = base.naturalWidth, h = base.naturalHeight; if (!w) return;
+        const c = document.createElement('canvas'); c.width = w; c.height = h;
+        c.className = 'cutout-img cutout-alt'; c.setAttribute('aria-hidden', 'true');
+        const g = c.getContext('2d');
+        g.filter = 'contrast(1.15) saturate(1.5)'; g.drawImage(base, 0, 0); g.filter = 'none';
+        g.globalCompositeOperation = 'source-atop';
+        const gr = g.createLinearGradient(0, 0, w, h);
+        gr.addColorStop(0, 'rgba(220,38,38,.65)'); gr.addColorStop(.55, 'rgba(220,38,38,.5)'); gr.addColorStop(1, 'rgba(37,99,235,.65)');
+        g.fillStyle = gr; g.fillRect(0, 0, w, h);
+        g.strokeStyle = 'rgba(255,255,255,.55)'; g.lineWidth = Math.max(1, w / 380);
+        const cx = w * .5, cy = h * .4, R = Math.hypot(w, h);
+        g.beginPath();
+        for (let i = 0; i < 14; i++) { const a = i / 14 * 6.2832; g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R); }
+        g.stroke();
+        for (let k = 1; k <= 10; k++) {
+          const rr = k * w * .085; g.beginPath();
+          for (let i = 0; i <= 14; i++) {
+            const a = i / 14 * 6.2832, m = rr * (i % 2 ? .93 : 1), px = cx + Math.cos(a) * m, py = cy + Math.sin(a) * m;
+            i ? g.lineTo(px, py) : g.moveTo(px, py);
+          }
+          g.closePath(); g.stroke();
+        }
+        alt.replaceWith(c); alt = c;
+      };
+      base.complete && base.naturalWidth ? build() : base.addEventListener('load', build, { once: true });
+    }
+    alt.addEventListener('error', fallback);
+    if (alt.complete && alt.naturalWidth === 0) fallback();
+
+    let tx = 0, ty = 0, tr = 0, x = 0, y = 0, r = 0, running = false;
+    const MAX = () => box.offsetWidth * 0.34;
+    const k = reduce ? 1 : 0.16, kr = reduce ? 1 : 0.1;
+
+    function loop() {
+      x += (tx - x) * k; y += (ty - y) * k; r += (tr - r) * kr;
+      box.style.setProperty('--mx', x.toFixed(1) + 'px');
+      box.style.setProperty('--my', y.toFixed(1) + 'px');
+      box.style.setProperty('--r', Math.max(r, .1).toFixed(1) + 'px');
+      box.style.setProperty('--o', Math.min(r / (MAX() || 1), 1).toFixed(2));
+      if (Math.abs(tx - x) + Math.abs(ty - y) + Math.abs(tr - r) > .15) requestAnimationFrame(loop);
+      else running = false;
+    }
+    const kick = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
+    function move(e) {
+      const b = box.getBoundingClientRect();
+      tx = e.clientX - b.left; ty = e.clientY - b.top; tr = MAX();
+      if (r < 2) { x = tx; y = ty; }
+      kick();
+    }
+    box.addEventListener('pointerenter', move);
+    box.addEventListener('pointermove', move);
+    box.addEventListener('pointerdown', move);
+    box.addEventListener('pointerleave', () => { tr = 0; kick(); });
+    box.addEventListener('pointercancel', () => { tr = 0; kick(); });
+  }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
+})();
+</script>
+                    <p class="text-slate-400 mt-4 text-sm sm:text-base leading-relaxed">
+                        Sebagai lulusan Teknik Informatika dari STT Wastukancana, saya memadukan logika software development dan Machine Learning dengan pengalaman operasional langsung di lapangan. Latar belakang ini membentuk pola pikir yang tak cuma tajam secara analitis, tapi juga praktis dan adaptif saat eksekusi.
+                    </p>
+                    <div class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-slate-300">
+                        <span class="inline-flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-accentEmerald" aria-hidden="true"></i>
+                            Purwakarta, Jawa Barat, Indonesia
+                        </span>
+                        <a href="tel:+6285723271837" class="inline-flex items-center gap-2 hover:text-accentEmerald transition-colors">
+                            <i class="fa-solid fa-phone text-accentEmerald" aria-hidden="true"></i>
+                            +62 857-2327-1837
+                        </a>
+                        <a href="mailto:ahlam1234lam@gmail.com" class="inline-flex items-center gap-2 hover:text-accentEmerald transition-colors">
+                            <i class="fa-solid fa-envelope text-accentEmerald" aria-hidden="true"></i>
+                            ahlam1234lam@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Highlight Metrics Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder text-center hover:border-emerald-500/50 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black text-emerald-400 mb-2">S.Kom</div>
+                        <div class="text-xs sm:text-sm font-semibold text-slate-300">Teknik Informatika</div>
+                        <div class="text-xs text-slate-500 mt-1">STT Wastukancana</div>
+                    </div>
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder text-center hover:border-cyan-500/50 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black text-accentCyan mb-2">Nilai A*</div>
+                        <div class="text-xs sm:text-sm font-semibold text-slate-300">Skripsi Mobile AI</div>
+                        <div class="text-xs text-slate-500 mt-1">MobileNetV2 & TFLite</div>
+                    </div>
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder text-center hover:border-emerald-500/50 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black text-emerald-400 mb-2">6+</div>
+                        <div class="text-xs sm:text-sm font-semibold text-slate-300">Sertifikat Resmi</div>
+                        <div class="text-xs text-slate-500 mt-1">Dicoding, LAN RI & Kemnaker</div>
+                    </div>
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder text-center hover:border-cyan-500/50 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black text-accentCyan mb-2">4+</div>
+                        <div class="text-xs sm:text-sm font-semibold text-slate-300">Pengalaman Kerja</div>
+                        <div class="text-xs text-slate-500 mt-1">Teknis, Web & Lapangan</div>
+                    </div>
+                </div>
+
+            
+            </div>
+            
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="py-20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase mb-2">Riwayat Akademik</h2>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Pendidikan</h3>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="bg-darkCard rounded-2xl border border-darkBorder p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:border-accentEmerald/50 transition-colors">
+                        <div class="w-14 h-14 shrink-0 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400">
+                                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                                Telah lulus
+                            </span>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white">S1 Teknik Informatika</h4>
+                            <p class="text-accentCyan font-semibold">STT Wastukancana</p>
+                            <p class="text-sm font-medium text-slate-300">September 2022 – Agustus 2026</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Meraih gelar Sarjana Komputer (S.Kom). Fokus akademik mencakup pengembangan perangkat lunak, aplikasi mobile, dan penerapan Edge AI.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-darkCard rounded-2xl border border-darkBorder p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:border-accentCyan/50 transition-colors">
+                        <div class="w-14 h-14 shrink-0 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-accentCyan flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-school" aria-hidden="true"></i>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-accentCyan">
+                                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                                Telah lulus
+                            </span>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white">Jurusan Ilmu Pengetahuan Alam (IPA)</h4>
+                            <p class="text-accentCyan font-semibold">MA Al-Huda 1 Jatiluhur</p>
+                            <p class="text-sm font-medium text-slate-300">Februari 2020 – Desember 2022</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Menyelesaikan pendidikan menengah atas dengan fokus pada ilmu pengetahuan alam, membangun dasar yang kuat untuk studi lanjutan di bidang teknik dan teknologi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase mb-2">Keahlian & Toolkit</h2>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Teknologi & Kompetensi Utama</h3>
+                </div>
+
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                            <i class="fa-solid fa-code" aria-hidden="true"></i>
+                        </span>
+                        Hard Skills
+                    </h4>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Skill Card 1 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-accentEmerald transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+                            <i class="fa-mobile-screen-button"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Mobile & Edge AI</h4>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-lg border border-slate-700">Kotlin</span>
+                            <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-lg border border-slate-700">Android Studio</span>
+                            <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-lg border border-slate-700">TensorFlow Lite</span>
+                            <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-lg border border-slate-700">MobileNetV2</span>
+                            <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-lg border border-slate-700">CameraX</span>
+                            <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-lg border border-slate-700">Telegram Bot API</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 2 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-accentCyan transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-accentCyan flex items-center justify-center text-xl">
+                            <i class="fa-chart-pie"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Data Analytics & Logic</h4>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-slate-800 text-accentCyan text-xs rounded-lg border border-slate-700">Python</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accentCyan text-xs rounded-lg border border-slate-700">Pandas & NumPy</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accentCyan text-xs rounded-lg border border-slate-700">MS Excel (Costing)</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accentCyan text-xs rounded-lg border border-slate-700">MS Word</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accentCyan text-xs rounded-lg border border-slate-700">SQL Data</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 3 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-blue-500 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-xl">
+                            <i class="fa-code"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Web & Tools</h4>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-slate-800 text-blue-400 text-xs rounded-lg border border-slate-700">Laravel / PHP</span>
+                            <span class="px-3 py-1 bg-slate-800 text-blue-400 text-xs rounded-lg border border-slate-700">HTML5 / CSS3</span>
+                            <span class="px-3 py-1 bg-slate-800 text-blue-400 text-xs rounded-lg border border-slate-700">JavaScript</span>
+                            <span class="px-3 py-1 bg-slate-800 text-blue-400 text-xs rounded-lg border border-slate-700">Git & GitHub</span>
+                            <span class="px-3 py-1 bg-slate-800 text-blue-400 text-xs rounded-lg border border-slate-700">Postman</span>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+                        </span>
+                        Soft Skills
+                    </h4>
+                    <div class="bg-darkCard p-6 sm:p-8 rounded-2xl border border-darkBorder hover:border-purple-500/50 transition-colors">
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Kepemimpinan</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Komunikasi profesional</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Presentasi & public speaking</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Kolaborasi lintas tim</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Pemecahan masalah</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Berpikir kritis dan analitis</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Adaptabilitas</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Manajemen waktu</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Teliti dan berorientasi pada kualitas</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Inisiatif dan proaktif</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Integritas dan tanggung jawab</span>
+                            <span class="px-4 py-2 bg-slate-800 text-purple-300 text-sm rounded-xl border border-slate-700">Kemauan belajar berkelanjutan</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION (WITH FILTER TABS) -->
+        <section id="projects" class="py-20 bg-slate-900/40 border-t border-darkBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold tracking-widest text-accentEmerald uppercase mb-2">Portofolio</h2>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Proyek & Hasil Karya</h3>
+                </div>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap justify-center items-center gap-3 mb-12">
+                    <button class="project-filter-btn px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm bg-accentEmerald text-slate-950 transition-all" data-filter="all">
+                        Semua Proyek
+                    </button>
+                    <button class="project-filter-btn px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm bg-darkCard border border-darkBorder text-slate-300 hover:text-white transition-all" data-filter="mobile">
+                        Mobile & Edge AI
+                    </button>
+                    <button class="project-filter-btn px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm bg-darkCard border border-darkBorder text-slate-300 hover:text-white transition-all" data-filter="web">
+                        Web Development
+                    </button>
+                   
+                </div>
+
+                <!-- Project Cards Grid -->
+                <div class="grid md:grid-cols-2 gap-8" id="projects-grid">
+                    
+                    <!-- Project Item 1 -->
+                    <div class="project-card bg-darkCard rounded-2xl border border-darkBorder overflow-hidden group hover:border-emerald-500/50 transition-all" data-category="mobile">
+                        <div class="min-h-48 max-h-[28rem] bg-slate-800 relative overflow-hidden flex items-center justify-center p-6 bg-gradient-to-br from-emerald-950/40 to-slate-900">
+                            <img src="img/projects/deteksi-jalan/cover.jpg" alt="Foto sampul proyek deteksi kondisi jalan" class="project-image hidden max-w-full max-h-[24rem] w-auto h-auto object-contain" data-image-placeholder="project-cover-placeholder">
+                            <div id="project-cover-placeholder" class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-emerald-950/80 to-slate-900/95 text-center">
+                                <i class="fa-solid fa-road text-5xl text-emerald-400/80 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-xs text-slate-300">Simpan foto sampul di<br><code class="text-emerald-300">img/projects/deteksi-jalan/cover.jpg</code></span>
+                            </div>
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-bold">
+                                Mobile & Edge AI
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h4 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                                Deteksi & Klasifikasi Kondisi Jalan Real-Time (Edge AI)
+                            </h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Aplikasi Android untuk klasifikasi jalan rusaknya citra kamera secara luring (*on-device*). Memanfaatkan arsitektur MobileNetV2 & TFLite, integrasi CameraX, koordinat GPS presisi, dan pengiriman laporan otomatis via Telegram Bot API.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">Android Kotlin</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">TensorFlow Lite</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">CameraX</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">Telegram API</span>
+                            </div>
+                            <button type="button" class="project-details-btn inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 px-4 py-2 text-sm font-semibold text-emerald-300 hover:bg-emerald-500/10 transition-colors" data-dialog-target="road-project-dialog" aria-haspopup="dialog" aria-controls="road-project-dialog">
+                                Lihat detail <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 2 -->
+                    <div class="project-card bg-darkCard rounded-2xl border border-darkBorder overflow-hidden group hover:border-cyan-500/50 transition-all" data-category="web">
+                        <div class="min-h-48 max-h-[28rem] bg-slate-800 relative overflow-hidden flex items-center justify-center p-6 bg-gradient-to-br from-cyan-950/40 to-slate-900">
+                            <img src="img/projects/pos-toko-kue/cover.jpg" alt="Foto sampul sistem POS dan digital marketing toko kue" class="project-image hidden max-w-full max-h-[24rem] w-auto h-auto object-contain" data-image-placeholder="pos-cover-placeholder">
+                            <div id="pos-cover-placeholder" class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-cyan-950/80 to-slate-900/95 text-center">
+                                <i class="fa-solid fa-store text-5xl text-cyan-400/80 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-xs text-slate-300">Simpan foto sampul di<br><code class="text-cyan-300">img/projects/pos-toko-kue/cover.jpg</code></span>
+                            </div>
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-lg text-xs font-bold">
+                                Web Development
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h4 class="text-xl font-bold text-white group-hover:text-accentCyan transition-colors">
+                                Sistem Informasi POS & Digital Marketing Toko Kue
+                            </h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Sistem aplikasi web *Point of Sale* (POS) untuk otomatisasi pembukuan transaksi harian, pengelolaan inventaris produk, serta promosi produk berbasis web untuk operasional Toko Kue Putri.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">Laravel</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">PHP & MySQL</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-md">Bootstrap / Web POS</span>
+                            </div>
+                            <button type="button" class="project-details-btn inline-flex items-center gap-2 rounded-xl border border-cyan-500/40 px-4 py-2 text-sm font-semibold text-cyan-300 hover:bg-cyan-500/10 transition-colors" data-dialog-target="pos-project-dialog" aria-haspopup="dialog" aria-controls="pos-project-dialog">
+                                Lihat detail <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    
+
+                    
+
+                </div>
+
+            </div>
+
+            <dialog id="road-project-dialog" class="project-detail-dialog w-11/12 max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl border border-darkBorder bg-darkBg p-0 text-slate-200 shadow-2xl backdrop:bg-slate-950/80">
+                <div class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-darkBorder bg-darkBg/95 px-6 py-4 backdrop-blur">
+                    <p class="text-sm font-semibold text-emerald-300">Detail Proyek · Mobile & Edge AI</p>
+                    <button type="button" id="close-road-project-dialog" class="project-dialog-close flex h-10 w-10 items-center justify-center rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white" data-dialog-close="road-project-dialog" aria-label="Tutup detail proyek">
+                        <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="space-y-8 p-6 sm:p-8">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white sm:text-3xl">Deteksi & Klasifikasi Kondisi Jalan Real-Time</h4>
+                        <p class="mt-4 leading-relaxed text-slate-300">
+                            Aplikasi mobile cerdas yang dibangun untuk mendeteksi serta melaporkan kondisi kerusakan permukaan jalan secara otomatis menggunakan pendekatan <em>Deep Learning</em>. Sistem ini mengadopsi kerangka kerja CRISP-DM dengan algoritma Convolutional Neural Network (CNN) berarsitektur MobileNetV2 yang dilatih menggunakan teknik <em>Fine-Tuning</em>. Aplikasi membedakan kondisi infrastruktur jalan menjadi empat kategori: Jalan Baik, Rusak Ringan, Rusak Berat, dan Belum Diaspal.
+                        </p>
+                    </div>
+
+                    <section aria-labelledby="road-project-gallery-title">
+                        <div class="mb-4">
+                            <h5 id="road-project-gallery-title" class="text-lg font-bold text-white">Contoh Gambar Proyek</h5>
+                            <p class="mt-1 text-sm text-slate-400">Tambahkan foto aplikasi atau hasil deteksi ke lokasi yang tertera pada setiap gambar.</p>
+                        </div>
+                        <div class="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/deteksi-jalan/screenshot-1.jpg" alt="Screenshot aplikasi deteksi kondisi jalan 1" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-screenshot-placeholder-1">
+                                <div id="road-screenshot-placeholder-1" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-mobile-screen-button text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 1 di<br><code class="text-emerald-300">img/projects/deteksi-jalan/screenshot-1.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/deteksi-jalan/screenshot-2.jpg" alt="Screenshot aplikasi deteksi kondisi jalan 2" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-screenshot-placeholder-2">
+                                <div id="road-screenshot-placeholder-2" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-road text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 2 di<br><code class="text-emerald-300">img/projects/deteksi-jalan/screenshot-2.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/deteksi-jalan/screenshot-3.jpg" alt="Screenshot aplikasi deteksi kondisi jalan 3" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-screenshot-placeholder-3">
+                                <div id="road-screenshot-placeholder-3" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-location-dot text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 3 di<br><code class="text-emerald-300">img/projects/deteksi-jalan/screenshot-3.jpg</code></span>
+                                </div>
+                            </div>
+<div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/deteksi-jalan/screenshot-4.jpg" alt="Screenshot aplikasi deteksi kondisi jalan 4" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-screenshot-placeholder-4">
+                                <div id="road-screenshot-placeholder-4" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-location-dot text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 4 di<br><code class="text-emerald-300">img/projects/deteksi-jalan/screenshot-4.jpg</code></span>
+                                </div>
+                            </div>              
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/deteksi-jalan/screenshot-5.jpg" alt="Screenshot aplikasi deteksi kondisi jalan 5" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-screenshot-placeholder-5">
+                                <div id="road-screenshot-placeholder-5" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-location-dot text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 5 di<br><code class="text-emerald-300">img/projects/deteksi-jalan/screenshot-5.jpg</code></span>
+                                </div>
+                            </div>
+                             <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/deteksi-jalan/screenshot-6.jpg" alt="Screenshot aplikasi deteksi kondisi jalan 6" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-screenshot-placeholder-6">
+                                <div id="road-screenshot-placeholder-6" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-location-dot text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 6 di<br><code class="text-emerald-300">img/projects/deteksi-jalan/screenshot-6.jpg</code></span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h5 class="mb-3 text-lg font-bold text-white">Fitur Utama</h5>
+                        <ul class="list-disc space-y-3 pl-5 leading-relaxed text-slate-300 marker:text-emerald-400">
+                            <li><strong class="text-white">Inferensi luring (on-device processing):</strong> Model klasifikasi berjalan langsung di smartphone secara offline sehingga deteksi cepat tanpa bergantung pada server eksternal.</li>
+                            <li><strong class="text-white">Penandaan lokasi otomatis:</strong> GPS mengambil koordinat latitude dan longitude saat pengguna memotret kerusakan jalan.</li>
+                            <li><strong class="text-white">Pelaporan kerusakan terpusat:</strong> Foto jalan, hasil klasifikasi, dan titik lokasi dikirim otomatis melalui REST API ke grup pemangku kepentingan.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h5 class="mb-3 text-lg font-bold text-white">Tumpukan Teknologi</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">Python</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">TensorFlow & CNN</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">MobileNetV2</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">Data Augmentation</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">Android Studio & Kotlin</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">TensorFlow Lite</span>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h5 class="mb-3 text-lg font-bold text-white">Integrasi Sistem</h5>
+                        <ul class="list-disc space-y-2 pl-5 leading-relaxed text-slate-300 marker:text-emerald-400">
+                            <li><strong class="text-white">Telegram Bot API & Retrofit:</strong> Mendiseminasikan laporan kerusakan secara real-time ke grup otoritas terkait.</li>
+                            <li><strong class="text-white">Location-Based Services:</strong> Memvalidasi lokasi kerusakan secara geografis menggunakan GPS smartphone.</li>
+                            <li><strong class="text-white">CameraX:</strong> Mengambil citra digital langsung melalui kamera smartphone.</li>
+                        </ul>
+                    </section>
+
+                    <section class="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+                        <h5 class="mb-2 text-lg font-bold text-white">Hasil & Pencapaian</h5>
+                        <p class="leading-relaxed text-slate-300">Evaluasi menggunakan matriks kebingungan pada 400 citra validasi menghasilkan Overall Accuracy sebesar <strong class="text-emerald-300">99%</strong> dan F1-Score <strong class="text-emerald-300">0.99</strong>.</p>
+                        <figure class="mt-5 overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-3">
+                            <img src="img/projects/deteksi-jalan/confusion-matrix.png" alt="Matriks kebingungan hasil evaluasi model klasifikasi kondisi jalan" class="project-image hidden mx-auto max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-confusion-matrix-placeholder">
+                            <figcaption id="road-confusion-matrix-placeholder" class="flex min-h-40 flex-col items-center justify-center gap-3 p-4 text-center">
+                                <i class="fa-solid fa-table-cells-large text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                <span class="text-sm text-slate-300">Simpan gambar matriks kebingungan di<br><code class="text-emerald-300">img/projects/deteksi-jalan/confusion-matrix.png</code></span>
+                            </figcaption>
+                        </figure>
+                        <figure class="mt-5 overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-3">
+                            <img src="img/projects/deteksi-jalan/Kurva..png" alt="Kurva akurasi dan loss training serta validasi selama 20 epoch" class="project-image hidden mx-auto max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="road-training-curves-placeholder">
+                            <figcaption id="road-training-curves-placeholder" class="flex min-h-40 flex-col items-center justify-center gap-3 p-4 text-center">
+                                <i class="fa-solid fa-chart-line text-3xl text-emerald-400/80" aria-hidden="true"></i>
+                                <span class="text-sm text-slate-300">Kurva Akurasi dan Loss selama 20 Epoch<br><code class="text-emerald-300">img/projects/deteksi-jalan/Kurva..png</code></span>
+                            </figcaption>
+                        </figure>
+                    </section>
+
+                    
+                </div>
+            </dialog>
+            <dialog id="pos-project-dialog" class="project-detail-dialog w-11/12 max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl border border-darkBorder bg-darkBg p-0 text-slate-200 shadow-2xl backdrop:bg-slate-950/80">
+                <div class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-darkBorder bg-darkBg/95 px-6 py-4 backdrop-blur">
+                    <p class="text-sm font-semibold text-cyan-300">Detail Proyek · Web Development</p>
+                    <button type="button" class="project-dialog-close flex h-10 w-10 items-center justify-center rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white" data-dialog-close="pos-project-dialog" aria-label="Tutup detail proyek POS">
+                        <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="space-y-8 p-6 sm:p-8">
+                    <section>
+                        <h4 class="text-2xl font-extrabold text-white sm:text-3xl">Sistem Informasi POS & Digital Marketing Toko Kue</h4>
+                        <p class="mt-4 leading-relaxed text-slate-300">
+                            Aplikasi web yang dikembangkan untuk mendukung operasional Toko Kue Putri melalui pengelolaan penjualan, inventaris, dan promosi produk dalam satu sistem. Fitur Point of Sale membantu pencatatan transaksi harian, sementara pengelolaan produk dan stok memudahkan pemantauan inventaris. Halaman promosi digital menyediakan informasi produk bagi pelanggan dan membantu toko memperluas jangkauan pemasarannya.
+                        </p>
+                    </section>
+
+                    <section aria-labelledby="pos-project-gallery-title">
+                        <div class="mb-4">
+                            <h5 id="pos-project-gallery-title" class="text-lg font-bold text-white">Galeri Gambar Proyek</h5>
+                            <p class="mt-1 text-sm text-slate-400">Tambahkan screenshot halaman aplikasi dengan nama file dan lokasi yang tertera.</p>
+                        </div>
+                        <div class="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/pos-toko-kue/screenshot-1.jpg" alt="Screenshot POS toko kue 1" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="pos-screenshot-placeholder-1">
+                                <div id="pos-screenshot-placeholder-1" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-cash-register text-3xl text-cyan-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 1 di<br><code class="text-cyan-300">img/projects/pos-toko-kue/screenshot-1.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/pos-toko-kue/screenshot-2.jpg" alt="Screenshot POS toko kue 2" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="pos-screenshot-placeholder-2">
+                                <div id="pos-screenshot-placeholder-2" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-receipt text-3xl text-cyan-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 2 di<br><code class="text-cyan-300">img/projects/pos-toko-kue/screenshot-2.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/pos-toko-kue/screenshot-3.jpg" alt="Screenshot POS toko kue 3" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="pos-screenshot-placeholder-3">
+                                <div id="pos-screenshot-placeholder-3" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-boxes-stacked text-3xl text-cyan-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 3 di<br><code class="text-cyan-300">img/projects/pos-toko-kue/screenshot-3.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/pos-toko-kue/screenshot-4.jpg" alt="Screenshot POS toko kue 4" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="pos-screenshot-placeholder-4">
+                                <div id="pos-screenshot-placeholder-4" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-chart-column text-3xl text-cyan-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 4 di<br><code class="text-cyan-300">img/projects/pos-toko-kue/screenshot-4.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/pos-toko-kue/screenshot-5.jpg" alt="Screenshot POS toko kue 5" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="pos-screenshot-placeholder-5">
+                                <div id="pos-screenshot-placeholder-5" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-bullhorn text-3xl text-cyan-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 5 di<br><code class="text-cyan-300">img/projects/pos-toko-kue/screenshot-5.jpg</code></span>
+                                </div>
+                            </div>
+                            <div class="relative flex min-h-48 items-center justify-center overflow-hidden rounded-xl border border-darkBorder bg-slate-900 p-2">
+                                <img src="img/projects/pos-toko-kue/screenshot-6.jpg" alt="Screenshot POS toko kue 6" class="project-image hidden max-w-full max-h-[70vh] w-auto h-auto object-contain" data-image-placeholder="pos-screenshot-placeholder-6">
+                                <div id="pos-screenshot-placeholder-6" class="flex flex-col items-center gap-3 p-4 text-center">
+                                    <i class="fa-solid fa-store text-3xl text-cyan-400/80" aria-hidden="true"></i>
+                                    <span class="text-xs text-slate-300">Simpan screenshot 6 di<br><code class="text-cyan-300">img/projects/pos-toko-kue/screenshot-6.jpg</code></span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h5 class="mb-3 text-lg font-bold text-white">Fitur & Deskripsi</h5>
+                        <ul class="list-disc space-y-3 pl-5 leading-relaxed text-slate-300 marker:text-cyan-400">
+                            <li><strong class="text-white">Pencatatan penjualan:</strong> Mendukung pencatatan transaksi harian melalui sistem Point of Sale agar data penjualan toko tersusun dan mudah ditinjau.</li>
+                            <li><strong class="text-white">Pengelolaan produk dan inventaris:</strong> Memusatkan pengelolaan informasi produk serta stok untuk membantu toko memantau persediaan.</li>
+                            <li><strong class="text-white">Promosi produk secara digital:</strong> Menyajikan informasi produk toko melalui halaman web sebagai sarana promosi dan referensi bagi pelanggan.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h5 class="mb-3 text-lg font-bold text-white">Tumpukan Teknologi</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">Laravel</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">PHP</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">MySQL</span>
+                            <span class="rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-200">Bootstrap</span>
+                        </div>
+                    </section>
+                </div>
+            </dialog>
+            <dialog id="project-image-viewer" class="w-11/12 max-w-7xl max-h-[95vh] overflow-hidden rounded-2xl border border-darkBorder bg-darkBg p-0 text-slate-200 shadow-2xl backdrop:bg-slate-950/90">
+                <div class="flex items-center justify-between gap-4 border-b border-darkBorder px-5 py-3">
+                    <p id="project-image-viewer-caption" class="text-sm font-semibold text-white"></p>
+                    <button type="button" id="close-project-image-viewer" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white" aria-label="Tutup gambar">
+                        <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="flex max-h-[calc(95vh-4rem)] items-center justify-center overflow-auto bg-slate-950 p-3 sm:p-6">
+                    <img id="project-image-viewer-content" src="" alt="" class="block max-h-[calc(95vh-7rem)] max-w-full w-auto h-auto object-contain">
+                </div>
+            </dialog>
+        </section>
+
+        <!-- CERTIFICATES GALLERY SECTION -->
+        <section id="certificates" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-accentCyan uppercase mb-2">Kredensial</h2>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Sertifikat & Pembekalan Resmi</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Cert 1 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder space-y-4 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-lg text-xs font-bold">
+                                    Dicoding Indonesia
+                                </span>
+                                <span class="text-xs text-slate-500">26 Okt 2026 - 2029</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Memulai Pemrograman dengan Haskell</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Sertifikat Kompetensi Kelulusan berstandar kurikulum STEI ITB. Total 20 jam materi functional programming, tuple, list, dan skrip algoritma.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono">ID: NVP7W44D4ZR0</span>
+                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Terverifikasi</span>
+                                         <!-- Contoh ditaruh di dalam kartu sertifikat atau proyek -->
+<a href="pdf/Haskell.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition inline-flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    Lihat PDF Sertifikat
+</a>
+            
+                        </div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder space-y-4 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-lg text-xs font-bold">
+                                    LAN RI & Pijar
+                                </span>
+                                <span class="text-xs text-slate-500">25 Okt 2026</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Memahami Penetapan Biaya & Analisis Bisnis Excel</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Pelatihan pengolahan data operasional, costing analysis, dan pemodelan keputusan bisnis. Nilai Akhir: 76.9 (Predikat Sangat Baik).
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono">ASN-LAN-RI-2VXA</span>
+                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Sangat Baik</span>
+                                          <!-- Contoh ditaruh di dalam kartu sertifikat atau proyek -->
+<a href="pdf/Analisis Bisnis dengan Excel.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition inline-flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    Lihat PDF Sertifikat
+</a>
+            
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder space-y-4 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-lg text-xs font-bold">
+                                    LAN RI & Pijar
+                                </span>
+                                <span class="text-xs text-slate-500">25 Okt 2026</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Digital Leadership: Memimpin di Era Teknologi</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Pembekalan wawasan manajemen teknologi dan strategi kepemimpinan digital. Nilai Akhir: 100.0 (Sangat Baik).
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono">ASN-LAN-RI-QJ79</span>
+                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Nilai 100</span>
+                                         <!-- Contoh ditaruh di dalam kartu sertifikat atau proyek -->
+<a href="pdf/Digital Leadership Memimpin di Era Teknologi.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition inline-flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    Lihat PDF Sertifikat
+</a>
+            
+                        </div>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder space-y-4 hover:border-cyan-500/50 transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-lg text-xs font-bold">
+                                    GNIK & Kemnaker
+                                </span>
+                                <span class="text-xs text-slate-500">17 Okt 2026</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">12+ Essential Skills: Adaptability</h4>
+        
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Pembekalan kemampuan adaptasi tinggi di lingkungan profesional kerja Magang Nasional Kemnaker RI.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono">Kemnaker RI</span>
+                            <span class="text-cyan-400 font-semibold"><i class="fa-solid fa-award"></i> Nilai 100</span>
+                                          <!-- Contoh ditaruh di dalam kartu sertifikat atau proyek -->
+<a href="pdf/Adaptability.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition inline-flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    Lihat PDF Sertifikat
+</a>
+            
+                        </div>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder space-y-4 hover:border-cyan-500/50 transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-lg text-xs font-bold">
+                                    GNIK & Kemnaker
+                                </span>
+                                <span class="text-xs text-slate-500">17 Okt 2026</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">12+ Essential Skills: Digital Literacy</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Pembekalan kompetensi literasi digital dasar & keamanan informasi profesional Magang Nasional.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono">Kemnaker RI</span>
+                            <span class="text-cyan-400 font-semibold"><i class="fa-solid fa-award"></i> Nilai 100</span>
+                            <!-- Contoh ditaruh di dalam kartu sertifikat atau proyek -->
+<a href="pdf/Digital Literacy.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition inline-flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    Lihat PDF Sertifikat
+</a>
+                        </div>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder space-y-4 hover:border-cyan-500/50 transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-lg text-xs font-bold">
+                                    GNIK & Kemnaker
+                                </span>
+                                <span class="text-xs text-slate-500">21 Okt 2026</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">12+ Essential Skills: Emotional Resilience</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Pembekalan ketahanan mental, manajemen tekanan kerja, dan komunikasi emosional profesional.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono">Kemnaker RI</span>
+                            <span class="text-cyan-400 font-semibold"><i class="fa-solid fa-award"></i> Nilai 90</span>
+                                          <!-- Contoh ditaruh di dalam kartu sertifikat atau proyek -->
+<a href="pdf/Emotional Resilience.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition inline-flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+    Lihat PDF Sertifikat
+</a>
+            
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EXPERIENCE TIMELINE SECTION -->
+        <section id="experience" class="py-20 bg-slate-900/40 border-t border-darkBorder">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-accentEmerald uppercase mb-2">Jejak Karir</h2>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white">Pengalaman Kerja & Operasional</h3>
+                </div>
+
+                <div class="relative border-l border-slate-800 ml-4 sm:ml-40 space-y-8 sm:space-y-10">
+                    
+                    <!-- Exp Item 1 -->
+                    <div class="relative pl-8 sm:pl-10 group">
+                        <div class="hidden sm:block absolute sm:-left-36 top-1 text-xs font-bold text-slate-400 w-28 text-right">
+                            2024 - 2026
+                        </div>
+                        <span class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-darkCard border-2 border-accentEmerald flex items-center justify-center text-accentEmerald text-xs shadow-lg shadow-emerald-950/30">
+                            <i class="fa-solid fa-compass"></i>
+                        </span>
+                        <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-emerald-500/50 transition-all space-y-2 sm:ml-1">
+                            <span class="sm:hidden text-xs font-bold text-accentEmerald">2024 - 2026</span>
+                            <h4 class="text-lg font-bold text-white">Freelance Tour Leader</h4>
+                            <h5 class="text-xs text-emerald-400 font-semibold">Doly Communication</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Memimpin dan mengoordinasikan operasional tur regional, mengelola jadwal perjalanan, logistik grup, serta mengasah komunikasi dan resolusi kendala cepat di lapangan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Exp Item 2 -->
+                    <div class="relative pl-8 sm:pl-10 group">
+                        <div class="hidden sm:block absolute sm:-left-36 top-1 text-xs font-bold text-slate-400 w-28 text-right">
+                            2025 - 2026
+                        </div>
+                        <span class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-darkCard border-2 border-accentCyan flex items-center justify-center text-accentCyan text-xs shadow-lg shadow-cyan-950/30">
+                            <i class="fa-solid fa-wrench"></i>
+                        </span>
+                        <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-cyan-500/50 transition-all space-y-2 sm:ml-1">
+                            <span class="sm:hidden text-xs font-bold text-accentCyan">2025 - 2026</span>
+                            <h4 class="text-lg font-bold text-white">Technical Specialist / Mekanik</h4>
+                            <h5 class="text-xs text-accentCyan font-semibold">Bengkel Alif Motor</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Melakukan diagnostik teknis sistem mekanis, perbaikan, dan *troubleshooting* terstruktur pada kendaraan dengan analisis masalah presisi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Exp Item 3 -->
+                    <div class="relative pl-8 sm:pl-10 group">
+                        <div class="hidden sm:block absolute sm:-left-36 top-1 text-xs font-bold text-slate-400 w-28 text-right">
+                            Juni - Oktober 2024
+                        </div>
+                        <span class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-darkCard border-2 border-purple-500 flex items-center justify-center text-purple-400 text-xs shadow-lg shadow-purple-950/30">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </span>
+                        <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-purple-500/50 transition-all space-y-2 sm:ml-1">
+                            <span class="sm:hidden text-xs font-bold text-purple-400">Juni - Oktober 2024</span>
+                            <h4 class="text-lg font-bold text-white">Store Staff & Inventaris</h4>
+                            <h5 class="text-xs text-purple-400 font-semibold">Toko Variasi Lampu</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Mengelola pencatatan stok barang, transaksi konsumen, dan penataan *display* inventaris secara sistematis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Exp Item 4 -->
+                    <div class="relative pl-8 sm:pl-10 group">
+                        <div class="hidden sm:block absolute sm:-left-36 top-1 text-xs font-bold text-slate-400 w-28 text-right">
+                            Mei - Agustus 2023
+                        </div>
+                        <span class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-darkCard border-2 border-blue-500 flex items-center justify-center text-blue-400 text-xs shadow-lg shadow-blue-950/30">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </span>
+                        <div class="bg-darkCard p-6 rounded-2xl border border-darkBorder hover:border-blue-500/50 transition-all space-y-2 sm:ml-1">
+                            <span class="sm:hidden text-xs font-bold text-blue-400">Mei - Agustus 2023</span>
+                            <h4 class="text-lg font-bold text-white">Web Developer & Store Admin</h4>
+                            <h5 class="text-xs text-blue-400 font-semibold">Toko Kue Putri</h5>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Merancang sistem Point of Sale (POS) berbasis web, mengelola pembukuan keuangan harian, dan mengoptimalkan transaksi digital toko.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT & FOOTER SECTION -->
+        <section id="contact" class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-gradient-to-r from-darkCard to-slate-900 border border-darkBorder rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-accentEmerald/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <h2 class="text-xs font-bold tracking-widest text-accentEmerald uppercase">Kontak & Diskusi</h2>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Mari Terhubung & Bekerja Sama</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Saya selalu terbuka untuk peluang posisi entry-level sebagai Mobile Developer, Data Analyst, maupun Junior IT Engineer. Jika Anda ingin berdiskusi lebih lanjut atau memiliki peluang yang sesuai, jangan ragu untuk menghubungi saya.
+                            </p>
+                        </div>
+
+                        <div class="lg:col-span-5 flex flex-col gap-4">
+                            <div class="w-full py-4 px-6 rounded-2xl bg-slate-800 border border-slate-700 text-slate-200 font-semibold flex items-center gap-3 text-sm">
+                                <i class="fa-solid fa-location-dot text-accentEmerald text-lg"></i>
+                                Kampung Ciganea, Desa Mekargalih, Kec Jatiluhur, RT/08 RW/03, Kab.Purwakarta, Jawa Barat, Indonesia
+                            </div>
+
+                            <a href="tel:+6285723271837" class="w-full py-4 px-6 rounded-2xl bg-slate-800 border border-slate-700 hover:border-accentCyan text-slate-200 font-semibold flex items-center gap-3 transition-all text-sm">
+                                <i class="fa-solid fa-phone text-accentCyan text-lg"></i>
+                                +62 857-2327-1837
+                            </a>
+
+                            <a href="https://github.com/ahlam-23" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-6 rounded-2xl bg-slate-800 border border-slate-700 hover:border-accentEmerald text-slate-200 font-semibold flex items-center gap-3 transition-all text-sm">
+                                <i class="fa-brands fa-github text-accentEmerald text-lg"></i>
+                                GitHub: github.com/ahlam-23
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/muhammad-ahlam-putra-ganis-446311447/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bg5NYupENRrKSKH230wnXZQ%3D%3D" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-6 rounded-2xl bg-slate-800 border border-slate-700 hover:border-accentCyan text-slate-200 font-semibold flex items-center gap-3 transition-all text-sm">
+                                <i class="fa-brands fa-linkedin-in text-accentCyan text-lg"></i>
+                                Profil LinkedIn
+                            </a>
+
+                            <button onclick="copyEmail('ahlam1234lam@gmail.com')" class="w-full py-4 px-6 rounded-2xl bg-slate-800 border border-slate-700 hover:border-accentEmerald text-slate-200 font-semibold flex items-center justify-between transition-all group">
+                                <span class="flex items-center gap-3 text-sm">
+                                    <i class="fa-solid fa-envelope text-accentEmerald text-lg"></i>
+                                    ahlam1234lam@gmail.com
+                                </span>
+                                <span class="text-xs text-slate-400 group-hover:text-accentEmerald">Salin <i class="fa-regular fa-copy"></i></span>
+                            </button>
+
+                            <a href="https://wa.me/6285723271837?text=Halo%20Muhammad%20Ahlam,%20saya%20tertarik%20berdiskusi%20mengenai%20peluang%20karir." target="_blank" rel="noopener" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-accentEmerald to-accentCyan text-slate-950 font-bold flex items-center justify-center gap-3 hover:brightness-110 transition-all text-sm">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Hubungi Via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg border-t border-darkBorder py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-500">
+                © 2026 Muhammad Ahlam Putra Ganis, S.Kom. All rights reserved.
+            </p>
+            <div class="flex items-center gap-4 text-xs text-slate-400">
+                <a href="#home" class="hover:text-accentEmerald transition-colors">Kembali ke Atas <i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactivity JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Project Filter Functionality
+        const filterBtns = document.querySelectorAll('.project-filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-accentEmerald', 'text-slate-950');
+                    b.classList.add('bg-darkCard', 'border', 'border-darkBorder', 'text-slate-300');
+                });
+
+                // Set active styling to clicked button
+                btn.classList.remove('bg-darkCard', 'border', 'border-darkBorder', 'text-slate-300');
+                btn.classList.add('bg-accentEmerald', 'text-slate-950');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Project detail dialog and local image placeholders
+        const projectImageViewer = document.getElementById('project-image-viewer');
+        const projectImageViewerContent = document.getElementById('project-image-viewer-content');
+        const projectImageViewerCaption = document.getElementById('project-image-viewer-caption');
+        const closeProjectImageViewer = document.getElementById('close-project-image-viewer');
+
+        document.querySelectorAll('.project-details-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById(button.dataset.dialogTarget).showModal();
+            });
+        });
+        document.querySelectorAll('.project-dialog-close').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById(button.dataset.dialogClose).close();
+            });
+        });
+        closeProjectImageViewer.addEventListener('click', () => projectImageViewer.close());
+        document.querySelectorAll('.project-detail-dialog').forEach(dialog => {
+            dialog.addEventListener('click', event => {
+                if (event.target === dialog) dialog.close();
+            });
+        });
+        projectImageViewer.addEventListener('click', event => {
+            if (event.target === projectImageViewer) projectImageViewer.close();
+        });
+
+        document.querySelectorAll('.project-image').forEach(image => {
+            const placeholder = document.getElementById(image.dataset.imagePlaceholder);
+            const showImage = () => {
+                image.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+
+                const imageContainer = image.parentElement;
+                imageContainer.classList.add('relative');
+                const viewImageButton = document.createElement('button');
+                viewImageButton.type = 'button';
+                viewImageButton.className = 'absolute bottom-3 right-3 z-10 inline-flex items-center gap-2 rounded-lg border border-white/20 bg-slate-950/90 px-3 py-2 text-xs font-semibold text-white shadow-lg transition-colors hover:bg-emerald-500 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-emerald-400';
+                viewImageButton.setAttribute('aria-label', `Lihat gambar ukuran penuh: ${image.alt}`);
+                viewImageButton.innerHTML = '<i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i><span>Lihat gambar</span>';
+                viewImageButton.addEventListener('click', () => {
+                    projectImageViewerContent.src = image.currentSrc || image.src;
+                    projectImageViewerContent.alt = image.alt;
+                    projectImageViewerCaption.textContent = image.alt;
+                    projectImageViewer.showModal();
+                });
+                imageContainer.appendChild(viewImageButton);
+            };
+
+            if (image.complete && image.naturalWidth > 0) showImage();
+            else image.addEventListener('load', showImage, { once: true });
+        });
+
+        // Copy Email Toast Function
+        function copyEmail(emailText) {
+            // Using execCommand for reliable iframe execution
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = emailText;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            // Show toast
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = `Email ${emailText} berhasil disalin!`;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+    <script src="animations.js" defer></script>
+</body>
+</html>
